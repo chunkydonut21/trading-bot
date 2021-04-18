@@ -14,6 +14,17 @@
 enum class OrderBookType {bid, ask};
 
 
+class OrderBookEntry {
+public:
+    OrderBookEntry(double _price, double _amount, std::string _timestamp, std::string _product, OrderBookType _orderType):
+    price(_price), amount(_amount), timestamp(_timestamp), product(_product), orderType(_orderType) {}
+    
+        double price;
+        double amount;
+        std::string timestamp;
+        std::string product;
+        OrderBookType orderType;
+};
 
 void printMenu() {
     std::cout << "1: Print help!" << std::endl;
@@ -108,6 +119,11 @@ int main() {
     timestamps.push_back("2020/03/17 17:01:24.886382");
     products.push_back("BTC/USDT");
     orderTypes.push_back(OrderBookType::bid);
+    
+    
+    
+    
+    OrderBookEntry orderBook(5000.3342, 0.024152, "2020/03/17 17:01:24.886382", "BTC/USDT", OrderBookType::bid);
     
     
     while (true) {
