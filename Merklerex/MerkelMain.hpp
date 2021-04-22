@@ -10,6 +10,8 @@
 #define MerkelMain_hpp
 
 #include <stdio.h>
+#include <vector>
+#include "OrderBookEntry.hpp"
 
 class MerkelMain {
 public:
@@ -17,6 +19,7 @@ public:
     /** call this to start the sim */
     void init();
 private:
+    void loadOrderBook();
     void printMenu();
     int getUserOption();
     void printHelp();
@@ -26,6 +29,7 @@ private:
     void printWallet();
     void gotoNextTimeframe();
     void processUserOption(int userOption);
+    std::vector<OrderBookEntry> orders;
 
 };
 
