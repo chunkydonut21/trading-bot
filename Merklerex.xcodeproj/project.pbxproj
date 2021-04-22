@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A4D4E6E26317D4C00F00BF8 /* OrderBookEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */; };
+		6A4D4E712631BA3100F00BF8 /* MerkelMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */; };
 		6A4FD86C2624A49000CCC877 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD86B2624A49000CCC877 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBookEntry.cpp; sourceTree = "<group>"; };
+		6A4D4E6D26317D4C00F00BF8 /* OrderBookEntry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderBookEntry.hpp; sourceTree = "<group>"; };
+		6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MerkelMain.cpp; sourceTree = "<group>"; };
+		6A4D4E702631BA3100F00BF8 /* MerkelMain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MerkelMain.hpp; sourceTree = "<group>"; };
 		6A4FD8682624A49000CCC877 /* Merklerex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Merklerex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4FD86B2624A49000CCC877 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				6A4FD86B2624A49000CCC877 /* main.cpp */,
+				6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */,
+				6A4D4E6D26317D4C00F00BF8 /* OrderBookEntry.hpp */,
+				6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */,
+				6A4D4E702631BA3100F00BF8 /* MerkelMain.hpp */,
 			);
 			path = Merklerex;
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4D4E712631BA3100F00BF8 /* MerkelMain.cpp in Sources */,
+				6A4D4E6E26317D4C00F00BF8 /* OrderBookEntry.cpp in Sources */,
 				6A4FD86C2624A49000CCC877 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
