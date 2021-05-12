@@ -28,6 +28,7 @@
 /* Begin PBXFileReference section */
 		6A47C9BD264979F3008E01E5 /* CSVReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSVReader.cpp; sourceTree = "<group>"; };
 		6A47C9BE264979F3008E01E5 /* CSVReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSVReader.hpp; sourceTree = "<group>"; };
+		6A47C9C12649B3E6008E01E5 /* data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = data.csv; sourceTree = "<group>"; };
 		6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBookEntry.cpp; sourceTree = "<group>"; };
 		6A4D4E6D26317D4C00F00BF8 /* OrderBookEntry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderBookEntry.hpp; sourceTree = "<group>"; };
 		6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MerkelMain.cpp; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 				6A4D4E702631BA3100F00BF8 /* MerkelMain.hpp */,
 				6A47C9BD264979F3008E01E5 /* CSVReader.cpp */,
 				6A47C9BE264979F3008E01E5 /* CSVReader.hpp */,
+				6A47C9C12649B3E6008E01E5 /* data.csv */,
 			);
 			path = Merklerex;
 			sourceTree = "<group>";

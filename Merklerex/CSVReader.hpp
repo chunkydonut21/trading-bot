@@ -36,3 +36,9 @@ private:
 
 
 
+
+// Change the orderBook vector into a map of timestamps to vectors of orderBook entries.
+
+// You might also want to use STL unordered_map s instead of map  (the former is a hashtable, the latter a Red Black tree). Also, precompute the unique timestamps ahead of time.
+
+
