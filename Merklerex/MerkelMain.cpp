@@ -19,20 +19,14 @@ MerkelMain::MerkelMain() {
 
 void MerkelMain::init() {
     
-    loadOrderBook();
-    
+    currentTime = orderbook.getEarliestTime();
+        
     while (true) {
         printMenu();
         int userOption = getUserOption();
         processUserOption(userOption);
     }
 }
-
-void MerkelMain::loadOrderBook() {
-    
-    orders = CSVReader::readCSV("data.csv");
-}
-
 
 void MerkelMain::printMenu() {
     std::cout << "1: Print help!" << std::endl;
@@ -41,6 +35,7 @@ void MerkelMain::printMenu() {
     std::cout << "4: Place a bid" << std::endl;
     std::cout << "5: Print wallet" << std::endl;
     std::cout << "6: Continue" << std::endl;
+    std::cout << "Current Time is: " << currentTime << std::endl;
 }
 
 int MerkelMain::getUserOption() {
@@ -59,24 +54,33 @@ void MerkelMain::printHelp() {
 
 void MerkelMain::printMarketStats() {
     
-    std::cout << "Market looks good: " << orders.size() << " entries" << std::endl;
-    
-    unsigned int asks = 0;
-    unsigned int bids = 0;
-    
-    for (const OrderBookEntry& order : orders) {
-        if(order.orderType == OrderBookType::ask) {
-            asks++;
-        } else if (order.orderType == OrderBookType::bid) {
-            bids++;
-        }
+    for (std::string const& p : orderbook.getKnownProducts()) {
+        std::cout << "Products: " << p << std::endl;
+        
+        std::vector<OrderBookEntry> entries = orderbook.getOrders(OrderBookType::ask, p, currentTime);
+        
+        std::cout << "Asks Seen: " << entries.size() << std::endl;
+        std::cout << "Max Ask: " << OrderBook::getHighPrice(entries) << std::endl;
+        std::cout << "Min Ask: " << OrderBook::getLowPrice(entries) << std::endl;
     }
-    
-    std::cout << "OrderBook asks: " << asks << " bids: " << bids << std::endl;
+//    std::cout << "Market looks good: " << orders.size() << " entries" << std::endl;
+//
+//    unsigned int asks = 0;
+//    unsigned int bids = 0;
+//
+//    for (const OrderBookEntry& order : orders) {
+//        if(order.orderType == OrderBookType::ask) {
+//            asks++;
+//        } else if (order.orderType == OrderBookType::bid) {
+//            bids++;
+//        }
+//    }
+//
+//    std::cout << "OrderBook asks: " << asks << " bids: " << bids << std::endl;
 
 }
 
-void MerkelMain::enterOffer() {
+void MerkelMain::enterAsk() {
     std::cout << "Make an offer - enter the amount." << std::endl;
 }
 
@@ -90,6 +94,8 @@ void MerkelMain::printWallet() {
 
 void MerkelMain::gotoNextTimeframe() {
     std::cout << "Going to next time frame." << std::endl;
+    
+    currentTime = orderbook.getNextTime(currentTime);
 }
 
 void MerkelMain::processUserOption(int userOption) {
@@ -106,7 +112,7 @@ void MerkelMain::processUserOption(int userOption) {
     }
     
     if (userOption == 3) {
-        enterOffer();
+        enterAsk();
     }
     
     if (userOption == 4) {

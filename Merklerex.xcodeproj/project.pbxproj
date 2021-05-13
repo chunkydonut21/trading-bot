@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A47C9BF264979F3008E01E5 /* CSVReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A47C9BD264979F3008E01E5 /* CSVReader.cpp */; };
+		6A47C9C4264BE68D008E01E5 /* OrderBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A47C9C2264BE68D008E01E5 /* OrderBook.cpp */; };
 		6A4D4E6E26317D4C00F00BF8 /* OrderBookEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */; };
 		6A4D4E712631BA3100F00BF8 /* MerkelMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */; };
 		6A4FD86C2624A49000CCC877 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD86B2624A49000CCC877 /* main.cpp */; };
@@ -29,6 +30,8 @@
 		6A47C9BD264979F3008E01E5 /* CSVReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSVReader.cpp; sourceTree = "<group>"; };
 		6A47C9BE264979F3008E01E5 /* CSVReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSVReader.hpp; sourceTree = "<group>"; };
 		6A47C9C12649B3E6008E01E5 /* data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = data.csv; sourceTree = "<group>"; };
+		6A47C9C2264BE68D008E01E5 /* OrderBook.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBook.cpp; sourceTree = "<group>"; };
+		6A47C9C3264BE68D008E01E5 /* OrderBook.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderBook.hpp; sourceTree = "<group>"; };
 		6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBookEntry.cpp; sourceTree = "<group>"; };
 		6A4D4E6D26317D4C00F00BF8 /* OrderBookEntry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderBookEntry.hpp; sourceTree = "<group>"; };
 		6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MerkelMain.cpp; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				6A47C9BD264979F3008E01E5 /* CSVReader.cpp */,
 				6A47C9BE264979F3008E01E5 /* CSVReader.hpp */,
 				6A47C9C12649B3E6008E01E5 /* data.csv */,
+				6A47C9C2264BE68D008E01E5 /* OrderBook.cpp */,
+				6A47C9C3264BE68D008E01E5 /* OrderBook.hpp */,
 			);
 			path = Merklerex;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				6A47C9BF264979F3008E01E5 /* CSVReader.cpp in Sources */,
 				6A4D4E6E26317D4C00F00BF8 /* OrderBookEntry.cpp in Sources */,
 				6A4FD86C2624A49000CCC877 /* main.cpp in Sources */,
+				6A47C9C4264BE68D008E01E5 /* OrderBook.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

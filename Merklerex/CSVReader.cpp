@@ -34,6 +34,8 @@ std::vector<OrderBookEntry> CSVReader::readCSV(std::string csvFilename) {
         }
     }
     
+    std::cout << "Total entries read: " << entries.size() << std::endl;
+    
     return entries;
 }
 
