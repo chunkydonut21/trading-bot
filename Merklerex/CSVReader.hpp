@@ -17,9 +17,11 @@ class CSVReader {
 public:
     CSVReader();
     static std::vector<OrderBookEntry> readCSV(std::string csvFile);
-
-private:
+    
     static std::vector<std::string> tokenise(std::string line, char separator);
+    
+    static OrderBookEntry stringToOBE(std::string price, std::string amount, std::string timestamp, std::string product, OrderBookType orderbookType);
+private:
     static OrderBookEntry stringToOBE(std::vector<std::string> strings);
 };
 

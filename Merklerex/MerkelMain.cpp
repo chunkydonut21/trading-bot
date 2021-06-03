@@ -39,9 +39,20 @@ void MerkelMain::printMenu() {
 }
 
 int MerkelMain::getUserOption() {
-    int userOption;
+    std::string line;
+    
+    int userOption = 0;
+    
     std::cout << "Type in 1-6" << std::endl;
-    std::cin >> userOption;
+    
+    std::getline(std::cin, line);
+    
+    try {
+         userOption = std::stoi(line);
+    } catch (const std::exception& e) {
+        
+    }
+    
     std::cout << "You choose: " << userOption << std::endl;
     
     return userOption;
@@ -81,7 +92,26 @@ void MerkelMain::printMarketStats() {
 }
 
 void MerkelMain::enterAsk() {
-    std::cout << "Make an offer - enter the amount." << std::endl;
+    std::cout << "Make an offer - enter the amount: product, price, amount, eg ETH/BTC,200,0.5" << std::endl;
+    
+    std::string input;
+        
+    std::getline(std::cin, input);
+    
+    std::vector<std::string> tokens = CSVReader::tokenise(input, ',');
+    
+    if(tokens.size() != 3) {
+        std::cout << "MerkelMain::enterAsk Bad Input" << tokens.size() << std::endl;
+    } else {
+        try {
+            OrderBookEntry obe = CSVReader::stringToOBE(tokens[1], tokens[2], currentTime, tokens[0], OrderBookType::ask);
+            orderbook.insertOrder(obe);
+            
+        } catch (const std::exception& e) {
+            std::cout << "MerkelMain::enterAsk Bad Input: " << input << std::endl;
+        }
+    }
+    std::cout << "You typed: " << input << std::endl;
 }
 
 void MerkelMain::enterBid() {
@@ -95,7 +125,19 @@ void MerkelMain::printWallet() {
 void MerkelMain::gotoNextTimeframe() {
     std::cout << "Going to next time frame." << std::endl;
     
+    std::vector<OrderBookEntry> sales = orderbook.matchAsksToBids("ETH/BTC", currentTime);
+    
+    std::cout << "Sales: " << sales.size() << std::endl;
+    
+    for (OrderBookEntry& sale : sales) {
+        std::cout << "Sale price: " << sale.price << " amount " << sale.amount << std::endl;
+    }
+    
     currentTime = orderbook.getNextTime(currentTime);
+    
+//    2020/03/17 17:01:24,ETH/BTC,bid,13,0.5
+//    2020/03/17 17:01:24,ETH/BTC,ask,13,0.5
+
 }
 
 void MerkelMain::processUserOption(int userOption) {
