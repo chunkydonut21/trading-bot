@@ -13,6 +13,7 @@
 #include <vector>
 #include "OrderBookEntry.hpp"
 #include "OrderBook.hpp"
+#include "Wallet.hpp"
 
 class MerkelMain {
 public:
@@ -31,7 +32,10 @@ private:
     void processUserOption(int userOption);
     OrderBook orderbook{"data.csv"};
     
+    
     std::string currentTime;
+    
+    Wallet wallet;
 };
 
 #endif /* MerkelMain_hpp */
