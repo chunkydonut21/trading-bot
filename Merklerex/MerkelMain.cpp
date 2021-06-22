@@ -10,26 +10,41 @@
 #include "CSVReader.hpp"
 #include <iostream>
 #include <vector>
+#include "Logger.hpp"
 
-
-
+/** Merkelmain constructor */
 MerkelMain::MerkelMain() {
     
 }
 
-void MerkelMain::init() {
+/** call this to start the sim */
+void MerkelMain::init(bool bot) {
     
+    // get the earliest time from the orderbook and assign it to the current time
     currentTime = orderbook.getEarliestTime();
     
-    wallet.insertCurrency("BTC", 10);
-        
-    while (true) {
-        printMenu();
-        int userOption = getUserOption();
-        processUserOption(userOption);
+    // insert currency to the wallet
+    // bot will use these currencies to automate trade
+    wallet.insertCurrency("BTC", 1000);
+    wallet.insertCurrency("ETH", 1000);
+    wallet.insertCurrency("DOGE", 1000);
+    wallet.insertCurrency("USDT", 1000);
+    
+    // check if the bot paramter is true or false
+    // if it is false then run the manual trading process
+    if(!bot) {
+        while (true) {
+            // print the menu
+            printMenu();
+            // store user option selected by user
+            int userOption = getUserOption();
+            // process user option
+            processUserOption(userOption);
+        }
     }
 }
 
+ /** prints the menu*/
 void MerkelMain::printMenu() {
     std::cout << "1: Print help!" << std::endl;
     std::cout << "2: Print exchange stats" << std::endl;
@@ -40,6 +55,7 @@ void MerkelMain::printMenu() {
     std::cout << "Current Time is: " << currentTime << std::endl;
 }
 
+/** get the user options */
 int MerkelMain::getUserOption() {
     std::string line;
     
@@ -47,9 +63,11 @@ int MerkelMain::getUserOption() {
     
     std::cout << "Type in 1-6" << std::endl;
     
+    // read the input user entered
     std::getline(std::cin, line);
     
     try {
+        // convert user option stored in string line to integer
          userOption = std::stoi(line);
     } catch (const std::exception& e) {
         
@@ -60,39 +78,34 @@ int MerkelMain::getUserOption() {
     return userOption;
 }
 
+/** print help */
 void MerkelMain::printHelp() {
     std::cout << "Help - choose options from the menu" << std::endl;
     std::cout << "and follow the on screen instructions." << std::endl;
 }
 
+/** print market stats */
 void MerkelMain::printMarketStats() {
     
-    for (std::string const& p : orderbook.getKnownProducts()) {
+    for (std::string const& p : orderbook.getKnownProducts(currentTime)) {
         std::cout << "Products: " << p << std::endl;
         
-        std::vector<OrderBookEntry> entries = orderbook.getOrders(OrderBookType::ask, p, currentTime);
+        std::vector<OrderBookEntry> askEntries = orderbook.getOrders(OrderBookType::ask, p, currentTime);
+        std::vector<OrderBookEntry> bidEntries = orderbook.getOrders(OrderBookType::bid, p, currentTime);
         
-        std::cout << "Asks Seen: " << entries.size() << std::endl;
-        std::cout << "Max Ask: " << OrderBook::getHighPrice(entries) << std::endl;
-        std::cout << "Min Ask: " << OrderBook::getLowPrice(entries) << std::endl;
-    }
-//    std::cout << "Market looks good: " << orders.size() << " entries" << std::endl;
-//
-//    unsigned int asks = 0;
-//    unsigned int bids = 0;
-//
-//    for (const OrderBookEntry& order : orders) {
-//        if(order.orderType == OrderBookType::ask) {
-//            asks++;
-//        } else if (order.orderType == OrderBookType::bid) {
-//            bids++;
-//        }
-//    }
-//
-//    std::cout << "OrderBook asks: " << asks << " bids: " << bids << std::endl;
+        std::cout << "Asks Seen: " << askEntries.size() << std::endl;
+        std::cout << "Bids Seen: " << bidEntries.size() << std::endl;
+        
+        std::cout << "Max Ask: " << OrderBook::getHighPrice(askEntries) << std::endl;
+        std::cout << "Min Ask: " << OrderBook::getLowPrice(askEntries) << std::endl;
 
+        std::cout << "Max Bid: " << OrderBook::getHighPrice(bidEntries) << std::endl;
+        std::cout << "Min Bid: " << OrderBook::getLowPrice(bidEntries) << std::endl;
+        
+    }
 }
 
+/** takes the user ask input */
 void MerkelMain::enterAsk() {
     std::cout << "Make an ask - enter the amount: product, price, amount, eg ETH/BTC,200,0.5" << std::endl;
     
@@ -118,9 +131,12 @@ void MerkelMain::enterAsk() {
             std::cout << "MerkelMain::enterAsk Bad Input: " << input << std::endl;
         }
     }
+    
     std::cout << "You typed: " << input << std::endl;
 }
 
+
+/** takes the user bid input */
 void MerkelMain::enterBid() {
     std::cout << "Make a bid - enter the amount: product, price, amount, eg ETH/BTC,200,0.5" << std::endl;
     
@@ -148,34 +164,57 @@ void MerkelMain::enterBid() {
     }
     std::cout << "You typed: " << input << std::endl;}
 
+
+/** print wallet */
 void MerkelMain::printWallet() {
     std::cout << wallet.toString()<< std::endl;
 }
 
+
+/** moving to the next time frame */
 void MerkelMain::gotoNextTimeframe() {
+    
     std::cout << "Going to next time frame." << std::endl;
     
-    std::vector<OrderBookEntry> sales = orderbook.matchAsksToBids("ETH/BTC", currentTime);
-    
-    std::cout << "Sales: " << sales.size() << std::endl;
-    
-    for (OrderBookEntry& sale : sales) {
-        std::cout << "Sale price: " << sale.price << " amount " << sale.amount << std::endl;
+    // loop through each of the products for the current time
+    for (std::string& product : orderbook.getKnownProducts(currentTime)) {
+        // match asks and bids on the basis of a particular product at the current time
+        // and returns the vector of sale order generated
+        std::vector<OrderBookEntry> sales = orderbook.matchAsksToBids(product, currentTime);
         
-        if(sale.username == "simuser") {
-            
-            // update the wallet
-            wallet.processSale(sale);
+        // check how many sales were generated for a particular product at the current time
+        std::cout << "There was : " << sales.size() << " number of sales" << std::endl;
+        
+        
+        // loop through the vector of sales
+        for (OrderBookEntry& sale : sales) {
+            std::cout << "Sale price: " << sale.price << " amount " << sale.amount << std::endl;
+            // check if the sale is made by simuser
+            if (sale.username == "simuser") {
+                // process sale and update wallet
+                wallet.processSale(sale);
+                // log the transactions in the logger instance
+                logger.logTransaction(sale, true);
+            }
         }
     }
     
+    // change the current timeframe to the next timeframe
     currentTime = orderbook.getNextTime(currentTime);
     
-//    2020/03/17 17:01:24,ETH/BTC,bid,13,0.5
-//    2020/03/17 17:01:24,ETH/BTC,ask,13,0.5
-
+    // withdraw non fulfilled orders by the simuser
+    withdrawOffers(currentTime);
+    
+    // add wallet balance to the logger
+    logger.logWalletBalance(wallet.toString());
+    
+    // export logger data to the log file
+    logger.exportToFile();
+    
 }
 
+
+/** process user option choosen by user */
 void MerkelMain::processUserOption(int userOption) {
     if (userOption == 0) {
         std::cout << "Invalid choice. Choose 1-6" << std::endl;
@@ -204,4 +243,54 @@ void MerkelMain::processUserOption(int userOption) {
     if (userOption == 6) {
         gotoNextTimeframe();
     }
+}
+
+
+/** make ask generated by the bot to the exchange */
+void MerkelMain::makeAsk(OrderBookEntry& obe) {
+    try {
+        obe.username="simuser";
+        // check if wallet can fulfill order
+        if (wallet.canFulfillOrder(obe)) {
+            std::cout << "Wallet looks good. " << std::endl;
+            // if wallet can fulfill order insert order to the orderbook
+            orderbook.insertOrder(obe);
+            // insert the transaction to the logger
+            logger.logTransaction(obe);
+        }
+        else {
+            std::cout << "not enough money. " << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cout << "MerkelMain::enterAsk Bad Input " << std::endl;
+    }
+}
+
+
+/** make bid generated by the bot to the exchange */
+void MerkelMain::makeBid(OrderBookEntry& obe) {
+    try {
+        obe.username="simuser";
+        // check if wallet can fulfill order
+        if (wallet.canFulfillOrder(obe)) {
+            // if wallet can fulfill order insert order to the orderbook
+            std::cout << "Wallet looks good. " << std::endl;
+            orderbook.insertOrder(obe);
+            // insert the transaction to the logger
+            logger.logTransaction(obe);
+        }
+        else {
+            std::cout << "not enough money. " << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cout << "MerkelMain::enterAsk Bad Input " << std::endl;
+    }
+}
+
+
+/** process user option choosen by user */
+void MerkelMain::withdrawOffers(std::string timestamp) {
+    
+    // remove asks or bids placed by user at a timeframe
+    orderbook.removeSimuserOrders(timestamp);
 }

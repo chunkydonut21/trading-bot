@@ -1,4 +1,3 @@
-//
 //  main.cpp
 //  Merklerex
 //
@@ -11,26 +10,41 @@
 #include <vector>
 
 #include "OrderBookEntry.hpp"
-#include "MerkelMain.hpp"
 #include "CSVReader.hpp"
 #include "Wallet.hpp"
+#include "TradingBot.hpp"
 
 #include <filesystem>
+#include <chrono>
+
+
+void runTradeBot()
+{
+    /* Initialize the TradingBot class instance. */
+    TradingBot tradingBot{};
+    
+    // calling initBot with paramter as true to run bot
+    tradingBot.initBot(true);
+    
+}
 
 int main() {
     
-    MerkelMain app{};
-    app.init();
+    using std::chrono::high_resolution_clock;
+    using std::chrono::duration_cast;
+    using std::chrono::duration;
+    using std::chrono::seconds;
+
+    auto time1 = high_resolution_clock::now();
     
-//    CSVReader::readCSV("data.csv");
-//
-//    Wallet wallet;
-//    wallet.insertCurrency("BTC", 10000);
-//    wallet.insertCurrency("USDT", 1000);
-//    std::cout << "Wallet has BTC " << wallet.containsCurrency("BTC", 10) << std::endl;
-//    std::cout << wallet.toString() << std::endl;
-//    wallet.removeCurrency("BTC", 1000);
-//    std::cout << wallet.toString() << std::endl;
+    runTradeBot();
+    
+    auto time2 = high_resolution_clock::now();
+
+    /* Getting number of seconds as an integer. */
+    auto ms_int = duration_cast<seconds>(time2 - time1);
+
+    std::cout << ms_int.count() << "s " << "is the total time taken to load the CSV & execute the trade.\n";
  
     return 0;
 }

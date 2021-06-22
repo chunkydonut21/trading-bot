@@ -12,35 +12,28 @@
 #import <vector>
 
 #include <stdio.h>
+#include <map>
+#include <unordered_map>
 
 class CSVReader {
 public:
     CSVReader();
-    static std::vector<OrderBookEntry> readCSV(std::string csvFile);
     
+    /** reads a csv file and returns the map with key as timestamps and value as vector of orders */
+    static std::map<std::string, std::vector<OrderBookEntry>> readCSV(std::string csvFile);
+    
+    /** convert the string to a vector of strings using a separator character */
     static std::vector<std::string> tokenise(std::string line, char separator);
     
+    /** convert string to order book entry */
     static OrderBookEntry stringToOBE(std::string price, std::string amount, std::string timestamp, std::string product, OrderBookType orderbookType);
+    
+    /** convert a obe to a string */
+    static std::string tokensToString(OrderBookEntry order);
+
 private:
+    /** convert string to order book entry*/
     static OrderBookEntry stringToOBE(std::vector<std::string> strings);
 };
 
 #endif /* CSVReader_hpp */
-
-
-
-
-//user will give the csv file =>
-//read single line => tokenise => [dsd,dsd,dsd,dsdd] =>
-//convert that vector of strings to the OrderBookEntry object =>
-//return the vector of OrderBookEntry object by looping over the csv file
-//=> so input is csv file and return type is vector of OrderBookEntry
-
-
-
-
-// Change the orderBook vector into a map of timestamps to vectors of orderBook entries.
-
-// You might also want to use STL unordered_map s instead of map  (the former is a hashtable, the latter a Red Black tree). Also, precompute the unique timestamps ahead of time.
-
-

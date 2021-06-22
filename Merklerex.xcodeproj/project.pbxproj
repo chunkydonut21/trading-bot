@@ -12,7 +12,10 @@
 		6A4D4E6E26317D4C00F00BF8 /* OrderBookEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */; };
 		6A4D4E712631BA3100F00BF8 /* MerkelMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D4E6F2631BA3100F00BF8 /* MerkelMain.cpp */; };
 		6A4FD86C2624A49000CCC877 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD86B2624A49000CCC877 /* main.cpp */; };
+		6A523678267E15EC007A652D /* ProductTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A523676267E15EC007A652D /* ProductTracker.cpp */; };
+		6A52367B267E1B38007A652D /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A523679267E1B38007A652D /* Logger.cpp */; };
 		6AB8F2B12668E51B0031DE80 /* Wallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8F2AF2668E51B0031DE80 /* Wallet.cpp */; };
+		6AD1EAB1267DE0F40074B2A2 /* TradingBot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AD1EAAF267DE0F40074B2A2 /* TradingBot.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,8 +42,15 @@
 		6A4D4E702631BA3100F00BF8 /* MerkelMain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MerkelMain.hpp; sourceTree = "<group>"; };
 		6A4FD8682624A49000CCC877 /* Merklerex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Merklerex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4FD86B2624A49000CCC877 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6A523676267E15EC007A652D /* ProductTracker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProductTracker.cpp; sourceTree = "<group>"; };
+		6A523677267E15EC007A652D /* ProductTracker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProductTracker.hpp; sourceTree = "<group>"; };
+		6A523679267E1B38007A652D /* Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		6A52367A267E1B38007A652D /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		6A5236812682266D007A652D /* log.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = log.csv; sourceTree = "<group>"; };
 		6AB8F2AF2668E51B0031DE80 /* Wallet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wallet.cpp; sourceTree = "<group>"; };
 		6AB8F2B02668E51B0031DE80 /* Wallet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wallet.hpp; sourceTree = "<group>"; };
+		6AD1EAAF267DE0F40074B2A2 /* TradingBot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TradingBot.cpp; sourceTree = "<group>"; };
+		6AD1EAB0267DE0F40074B2A2 /* TradingBot.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TradingBot.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,13 @@
 				6A47C9C3264BE68D008E01E5 /* OrderBook.hpp */,
 				6AB8F2AF2668E51B0031DE80 /* Wallet.cpp */,
 				6AB8F2B02668E51B0031DE80 /* Wallet.hpp */,
+				6AD1EAAF267DE0F40074B2A2 /* TradingBot.cpp */,
+				6AD1EAB0267DE0F40074B2A2 /* TradingBot.hpp */,
+				6A523676267E15EC007A652D /* ProductTracker.cpp */,
+				6A523677267E15EC007A652D /* ProductTracker.hpp */,
+				6A523679267E1B38007A652D /* Logger.cpp */,
+				6A52367A267E1B38007A652D /* Logger.hpp */,
+				6A5236812682266D007A652D /* log.csv */,
 			);
 			path = Merklerex;
 			sourceTree = "<group>";
@@ -149,6 +166,9 @@
 				6A4D4E712631BA3100F00BF8 /* MerkelMain.cpp in Sources */,
 				6A47C9BF264979F3008E01E5 /* CSVReader.cpp in Sources */,
 				6AB8F2B12668E51B0031DE80 /* Wallet.cpp in Sources */,
+				6A52367B267E1B38007A652D /* Logger.cpp in Sources */,
+				6A523678267E15EC007A652D /* ProductTracker.cpp in Sources */,
+				6AD1EAB1267DE0F40074B2A2 /* TradingBot.cpp in Sources */,
 				6A4D4E6E26317D4C00F00BF8 /* OrderBookEntry.cpp in Sources */,
 				6A4FD86C2624A49000CCC877 /* main.cpp in Sources */,
 				6A47C9C4264BE68D008E01E5 /* OrderBook.cpp in Sources */,
