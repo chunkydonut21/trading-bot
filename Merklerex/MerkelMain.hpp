@@ -15,6 +15,7 @@
 #include "OrderBook.hpp"
 #include "Wallet.hpp"
 #include "Logger.hpp"
+#include "CSVReader.hpp"
 
 class MerkelMain {
 public:
@@ -47,7 +48,7 @@ protected:
     // naming these as protected because they need to be accessed by TradingBot class.
     
     /** initialized orderbook */
-    OrderBook orderbook{"20200601.csv"};
+    OrderBook orderbook{"20200317.csv"};
     /** current time */
     std::string currentTime;
     /** moving to the next time frame */

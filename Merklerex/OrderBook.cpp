@@ -8,9 +8,6 @@
 
 #include "OrderBook.hpp"
 #include "CSVReader.hpp"
-#include <iostream>
-#include <vector>
-#include <map>
 #include <set>
 
 /** construct, reading a csv data file */

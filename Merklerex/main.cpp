@@ -6,15 +6,8 @@
 //
 
 #include <iostream>
-#include <string>
-#include <vector>
-
-#include "OrderBookEntry.hpp"
-#include "CSVReader.hpp"
-#include "Wallet.hpp"
 #include "TradingBot.hpp"
 
-#include <filesystem>
 #include <chrono>
 
 
@@ -24,7 +17,7 @@ void runTradeBot()
     TradingBot tradingBot{};
     
     // calling initBot with paramter as true to run bot
-    tradingBot.initBot(true);
+    tradingBot.initBot(false);
     
 }
 

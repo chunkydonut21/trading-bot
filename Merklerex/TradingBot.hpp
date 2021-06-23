@@ -15,7 +15,6 @@
 #include <vector>
 #include <map>
 #import "ProductTracker.hpp"
-#import "OrderBook.hpp"
 
 
 /** TradingBot extends MerkelMain */

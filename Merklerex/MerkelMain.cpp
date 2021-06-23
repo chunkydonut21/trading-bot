@@ -7,10 +7,7 @@
 //
 
 #include "MerkelMain.hpp"
-#include "CSVReader.hpp"
 #include <iostream>
-#include <vector>
-#include "Logger.hpp"
 
 /** Merkelmain constructor */
 MerkelMain::MerkelMain() {

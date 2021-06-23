@@ -12,10 +12,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
-#include "OrderBookEntry.hpp"
 #include <map>
-
-#include <unordered_map>
+#include "OrderBookEntry.hpp"
 
 class OrderBook {
 public:

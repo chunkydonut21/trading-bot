@@ -8,7 +8,6 @@
 
 #include "TradingBot.hpp"
 #include <iostream>
-#include <string>
 #include <math.h>
 
 
