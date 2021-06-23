@@ -33,7 +33,7 @@ int main() {
     using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
     using std::chrono::duration;
-    using std::chrono::seconds;
+    using std::chrono::milliseconds;
 
     auto time1 = high_resolution_clock::now();
     
@@ -42,9 +42,9 @@ int main() {
     auto time2 = high_resolution_clock::now();
 
     /* Getting number of seconds as an integer. */
-    auto ms_int = duration_cast<seconds>(time2 - time1);
+    auto ms_int = duration_cast<milliseconds>(time2 - time1);
 
-    std::cout << ms_int.count() << "s " << "is the total time taken to load the CSV & execute the trade.\n";
+    std::cout << ms_int.count() << "ms " << "is the total time taken to load the CSV & execute the trade.\n";
  
     return 0;
 }

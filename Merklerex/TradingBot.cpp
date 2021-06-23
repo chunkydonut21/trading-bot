@@ -82,6 +82,12 @@ bool TradingBot::lookForTrade(ProductTracker& product) {
     
     // get all the orders on the basis of product name and current time and store in vector of orders
     std::vector<OrderBookEntry> orders = orderbook.getAllOrders(product.name, currentTime);
+    
+    // trade is not possible if the orders are not present
+    if(orders.size() < 1) {
+        return false;
+    }
+
     // calculate the average price of orders
     double average = orderbook.calculateAveragePrice(orders);
     // insert the average price in the price array of product tracker object
@@ -93,7 +99,6 @@ bool TradingBot::lookForTrade(ProductTracker& product) {
     // b = constant (y-intercept of the line of best fit)
     double a, b;
     
-    //
     std::vector<double> y_axis_value = product.price;
     
     
@@ -110,22 +115,22 @@ bool TradingBot::lookForTrade(ProductTracker& product) {
         xysum = xysum + i * y_axis_value[i];
     }
     
+    
     // calculating the slope
-    a = (n * xysum - xsum * ysum) / (n * x2sum - xsum * xsum);
+    a = ((n * xysum) - (xsum * ysum)) / ((n * x2sum) - (xsum * xsum));
+    
     // calculate the constat (y-intercept of the line of best fit)
-    b = (x2sum * ysum - xsum * xysum) / (x2sum * n - xsum * xsum);
+    b = (ysum/n) - ((a * xsum)/n);
+    // b = (x2sum * ysum - xsum * xysum) / ((x2sum * n) - (xsum * xsum));
 
     // update the product tracker object with slope and intercept which we calculated
     product.a = a;
     product.b = b;
     
-    // std::cout<<"The linear fit line is: "<<a<<"x + "<<b<<std::endl;
+    std::cout<<"The linear fit line is: "<<a<<"x + "<<b<<std::endl;
     
-    // check if it is right time to trade by checking variance difference
-    if(a > variance || a < -variance) return true;
-    
-    // if the variance difference is not good enough then don't trade
-    return false;
+    // if the trade is possible
+    return true;
 
 }
 
@@ -158,7 +163,7 @@ OrderBookEntry TradingBot::makePrediction(ProductTracker& product) {
 void TradingBot::processSale(OrderBookEntry& obe){
 
     
-    // chek if the ordertype is bid or ask
+    // check if the ordertype is bid or ask
     if(obe.orderType == OrderBookType::bid) {
         
         std::cout << "[ProcessingSale] Bot is now making Bid" << std::endl;

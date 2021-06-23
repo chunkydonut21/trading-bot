@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		6A47C9BD264979F3008E01E5 /* CSVReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSVReader.cpp; sourceTree = "<group>"; };
 		6A47C9BE264979F3008E01E5 /* CSVReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSVReader.hpp; sourceTree = "<group>"; };
-		6A47C9C12649B3E6008E01E5 /* data.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = data.csv; sourceTree = "<group>"; };
+		6A47C9C12649B3E6008E01E5 /* 20200601.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = 20200601.csv; sourceTree = "<group>"; };
 		6A47C9C2264BE68D008E01E5 /* OrderBook.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBook.cpp; sourceTree = "<group>"; };
 		6A47C9C3264BE68D008E01E5 /* OrderBook.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrderBook.hpp; sourceTree = "<group>"; };
 		6A4D4E6C26317D4C00F00BF8 /* OrderBookEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrderBookEntry.cpp; sourceTree = "<group>"; };
@@ -47,6 +47,7 @@
 		6A523679267E1B38007A652D /* Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 		6A52367A267E1B38007A652D /* Logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
 		6A5236812682266D007A652D /* log.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = log.csv; sourceTree = "<group>"; };
+		6A5236822683A684007A652D /* 20200317.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = 20200317.csv; sourceTree = "<group>"; };
 		6AB8F2AF2668E51B0031DE80 /* Wallet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wallet.cpp; sourceTree = "<group>"; };
 		6AB8F2B02668E51B0031DE80 /* Wallet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wallet.hpp; sourceTree = "<group>"; };
 		6AD1EAAF267DE0F40074B2A2 /* TradingBot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TradingBot.cpp; sourceTree = "<group>"; };
@@ -90,7 +91,7 @@
 				6A4D4E702631BA3100F00BF8 /* MerkelMain.hpp */,
 				6A47C9BD264979F3008E01E5 /* CSVReader.cpp */,
 				6A47C9BE264979F3008E01E5 /* CSVReader.hpp */,
-				6A47C9C12649B3E6008E01E5 /* data.csv */,
+				6A47C9C12649B3E6008E01E5 /* 20200601.csv */,
 				6A47C9C2264BE68D008E01E5 /* OrderBook.cpp */,
 				6A47C9C3264BE68D008E01E5 /* OrderBook.hpp */,
 				6AB8F2AF2668E51B0031DE80 /* Wallet.cpp */,
@@ -102,6 +103,7 @@
 				6A523679267E1B38007A652D /* Logger.cpp */,
 				6A52367A267E1B38007A652D /* Logger.hpp */,
 				6A5236812682266D007A652D /* log.csv */,
+				6A5236822683A684007A652D /* 20200317.csv */,
 			);
 			path = Merklerex;
 			sourceTree = "<group>";

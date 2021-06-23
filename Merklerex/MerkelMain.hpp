@@ -47,7 +47,7 @@ protected:
     // naming these as protected because they need to be accessed by TradingBot class.
     
     /** initialized orderbook */
-    OrderBook orderbook{"data.csv"};
+    OrderBook orderbook{"20200601.csv"};
     /** current time */
     std::string currentTime;
     /** moving to the next time frame */
