@@ -20,7 +20,7 @@ void TradingBot::initBot(bool bot){
     // initialize merkelmain and pass the boolean bot parameter to check whether to run bot or not
     init(bot);
     
-    std::cout << "Merklebot has been initialized. The bot will now run the simulation." << std::endl;
+    std::cout << "[TradingBot::initBot] Merklebot has been initialized. The bot will now run the simulation." << std::endl;
        
     // initialize the product tracker to store average prices
     initializeProductTracker();
@@ -126,7 +126,7 @@ bool TradingBot::lookForTrade(ProductTracker& product) {
     product.a = a;
     product.b = b;
     
-    std::cout<<"The linear fit line is: "<<a<<"x + "<<b<<std::endl;
+    std::cout<<"[TradingBot::lookForTrade] The linear fit line is: "<<a<<"x + "<<b<<std::endl;
     
     // if the trade is possible
     return true;
@@ -165,21 +165,13 @@ void TradingBot::processSale(OrderBookEntry& obe){
     // check if the ordertype is bid or ask
     if(obe.orderType == OrderBookType::bid) {
         
-        std::cout << "[ProcessingSale] Bot is now making Bid" << std::endl;
+        std::cout << "[TradingBot::processSale] Bot is now making Bid" << std::endl;
         // make bid to the exchange
         makeBid(obe);
 
     } else if (obe.orderType == OrderBookType::ask) {
-        std::cout << "[ProcessingSale] Bot is now making Ask" << std::endl;
+        std::cout << "[TradingBot::processSale] Bot is now making Ask" << std::endl;
         // make ask to the exchange
         makeAsk(obe);
     }
-}
-    
-    
-/** check on how much quantity to trade */
-double TradingBot::getQuantityToTrade(std::vector<double> price){
-    // compare the latest price to last 3 prices, m and all average to choose quantity for trade
-    
-    return 1.0;
 }

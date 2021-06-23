@@ -25,7 +25,7 @@ std::map<std::string, std::vector<OrderBookEntry>> CSVReader::readCSV(std::strin
 
     // check if csv file cannot be opened
     if (!csvFile.is_open()) {
-        std::cout << "Could not open file" << std::endl;
+        std::cout << "[CSVReader::readCSV] Could not open file" << std::endl;
         exit(-1);
     }
 
@@ -38,11 +38,11 @@ std::map<std::string, std::vector<OrderBookEntry>> CSVReader::readCSV(std::strin
             // push the order in the entries map on the basis of timestamp
             entries[obe.timestamp].push_back(obe);
         } catch (const std::exception& e) {
-            std::cout << "Bad Data" << std::endl;
+            std::cout << "[CSVReader::readCSV] Bad Data" << std::endl;
         }
     }
 
-    std::cout << "Total entries read: " << entries.size() << std::endl;
+    std::cout << "[CSVReader::readCSV] Total entries read: " << entries.size() << std::endl;
 
     return entries;
 }
@@ -83,7 +83,7 @@ OrderBookEntry CSVReader::stringToOBE(std::vector<std::string> tokens) {
     
     // check if the token size is less than 5
     if (tokens.size() != 5) {
-        std::cout << "CSVReader::stringToOBE Bad line" << std::endl;
+        std::cout << "[CSVReader::stringToOBE] Bad line" << std::endl;
         throw std::exception{};
     }
     
@@ -92,7 +92,7 @@ OrderBookEntry CSVReader::stringToOBE(std::vector<std::string> tokens) {
         price = std::stod(tokens[3]);
         
     } catch(const std::exception& e) {
-        std::cout << "CSVReader::stringToOBE Bad float!" << std::endl;
+        std::cout << "[CSVReader::stringToOBE] Bad float!" << std::endl;
         throw;
         
     }
@@ -115,8 +115,8 @@ OrderBookEntry CSVReader::stringToOBE(std::string priceString, std::string amoun
         // convert amount from string to double
         amount = std::stod(amountString);
     } catch (const std::exception& e) {
-        std::cout << "CSVReader::stringToOBE Bad float: " << priceString << std::endl;
-        std::cout << "CSVReader::stringToOBE Bad float: " << amountString << std::endl;
+        std::cout << "[CSVReader::stringToOBE] Bad float: " << priceString << std::endl;
+        std::cout << "[CSVReader::stringToOBE] Bad float: " << amountString << std::endl;
         throw;
     }
     

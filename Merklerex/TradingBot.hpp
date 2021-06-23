@@ -38,8 +38,7 @@ private:
     bool lookForTrade(ProductTracker& product);
     /** calculate the prediction price and check whether to ask or sale */
     OrderBookEntry makePrediction(ProductTracker& proudct);
-    /** check on how much quantity to trade */
-    double getQuantityToTrade(std::vector<double> price);
+    
 };
 
 

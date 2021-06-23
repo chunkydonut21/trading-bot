@@ -179,7 +179,6 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
                 // create a orderbook entry object
                  OrderBookEntry sale{ask.price, 0, timestamp, product, OrderBookType::askSale};
 
-
                 if(bid.username == "simuser"){
                     sale.username = "simuser";
                     sale.orderType = OrderBookType::bidSale;
@@ -189,7 +188,6 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
                     sale.username = "simuser";
                     sale.orderType = OrderBookType::askSale;
                 }
-
 
                 // now work out how much was sold and
                 // create new bids and asks covering

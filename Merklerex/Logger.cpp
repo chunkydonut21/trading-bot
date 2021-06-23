@@ -24,7 +24,7 @@ void Logger::exportToFile() {
     // opens the file "log.csv"
     std::ofstream out("log.csv");
     
-    std::cout << "[ExportToFile] Total transactions: " << logBook.size() << std::endl;
+    std::cout << "[Logger::exportToFile] Total transactions: " << logBook.size() << std::endl;
     
     // looping logbook and writing each log to the "log.csv" file
     for (std::string& line : logBook) {
