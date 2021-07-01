@@ -101,26 +101,21 @@ bool TradingBot::lookForTrade(ProductTracker& product) {
     std::vector<double> y_axis_value = product.price;
     
     
-    double xsum = 0, x2sum = 0, ysum = 0, xysum = 0;
+    double x_sum = 0, x_sum_2 = 0, y_sum = 0, xy_sum = 0;
     
     for (int i = 0; i < n; ++i) {
-        // calculate sigma (xi)
-        xsum = xsum + i;
-        //calculate sigma(yi)
-        ysum = ysum + y_axis_value[i];
-        //calculate sigma(x^2i)
-        x2sum = x2sum + pow(i, 2);
-        //calculate sigma(xi*yi)
-        xysum = xysum + i * y_axis_value[i];
+        x_sum = x_sum + i;
+        y_sum = y_sum + y_axis_value[i];
+        x_sum_2 = x_sum_2 + pow(i, 2);
+        xy_sum = xy_sum + i * y_axis_value[i];
     }
     
     
     // calculating the slope
-    a = ((n * xysum) - (xsum * ysum)) / ((n * x2sum) - (xsum * xsum));
+    a = ((n * xy_sum) - (x_sum * y_sum)) / ((n * x_sum_2) - (x_sum * x_sum));
     
     // calculate the constat (y-intercept of the line of best fit)
-    b = (ysum/n) - ((a * xsum)/n);
-    // b = (x2sum * ysum - xsum * xysum) / ((x2sum * n) - (xsum * xsum));
+    b = (y_sum/n) - ((a * x_sum)/n);
 
     // update the product tracker object with slope and intercept which we calculated
     product.a = a;

@@ -17,7 +17,7 @@ void runTradeBot()
     TradingBot tradingBot{};
     
     // calling initBot with paramter as true to run bot
-    tradingBot.initBot(false);
+    tradingBot.initBot(true);
     
 }
 
